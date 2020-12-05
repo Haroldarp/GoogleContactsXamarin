@@ -1,4 +1,5 @@
 ﻿using GoogleContactsXamarin.Models;
+using GoogleContactsXamarin.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,18 +11,21 @@ namespace GoogleContactsXamarin.ViewModels
 {
     class AddContactViewModel : BaseViewModel
     {
-        public Contact NewContact { get; set; }
+        public Contact Contact { get; set; }
         public ICommand SaveCommad { get; }
+        public IList<string> PhoneLabels => new List<string>() { "No Label", "Mobile", "Work", "Home", "Main", "Work Fax", "Home Fax",
+        "Pager","Other"};
+        public IList<string> EmailLabels => new List<string>() { "No Label", "Work", "Home", "Main", "Other"};
 
         public AddContactViewModel(Contact contact = null)
         {
             if(contact == null)
             {
-                NewContact = new Contact();
+                Contact = new Contact();
             }
             else
             {
-                NewContact = contact;
+                Contact = contact;
             }
 
             SaveCommad = new Command(async () => await OnSave());
@@ -29,13 +33,14 @@ namespace GoogleContactsXamarin.ViewModels
 
         public async Task OnSave()
         {
-            if(string.IsNullOrWhiteSpace(NewContact.FirstName) || string.IsNullOrWhiteSpace(NewContact.PhoneNumber))
+            if(string.IsNullOrWhiteSpace(Contact.FirstName) || string.IsNullOrWhiteSpace(Contact.PhoneNumber))
             {
                 await App.Current.MainPage.DisplayAlert("Alerta", "Los campos de nombre y numero son requeridos", "Ok");
                 return;
             }
-            await App.Database.SaveContactAsync(NewContact);
-            await App.Current.MainPage.DisplayAlert("Guardado", $"El contacto {NewContact.FirstName} fue guardado en la agenda", "Ok");
+            Contact.ColorHex = ColorHelper.ColorHex;
+            await App.Database.SaveContactAsync(Contact);
+            await App.Current.MainPage.DisplayAlert("Guardado", $"El contacto {Contact.FirstName} fue guardado en la agenda", "Ok");
             await App.Current.MainPage.Navigation.PopToRootAsync();
         }
     }

@@ -19,19 +19,20 @@
             </Frame>
 
             <Image Source="user.png" Grid.Column="0" Grid.Row="1" HeightRequest="40" />
-            <Entry Text="{Binding NewContact.FirstName}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Placeholder="Fist Name"/>
-            <Entry Text="{Binding NewContact.LastName}" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Placeholder="Last Name" Margin="0,0,0,10"/>
+            <Entry Text="{Binding Contact.FirstName}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Placeholder="Fist Name"/>
+            <Entry Text="{Binding Contact.LastName}" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Placeholder="Last Name" Margin="0,0,0,10"/>
 
             <Image Source="company.png" Grid.Column="0" Grid.Row="3" HeightRequest="40"/>
-            <Entry Text="{Binding NewContact.Company}" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Placeholder="Company" Margin="0,0,0,10"/>
+            <Entry Text="{Binding Contact.Company}" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Placeholder="Company" Margin="0,0,0,10"/>
 
             <Image Source="phone.png" Grid.Column="0" Grid.Row="4" HeightRequest="40"/>
-            <Entry Text="{Binding NewContact.PhoneNumber}" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Placeholder="Phone"/>
-            <Picker Title="Mobile" Grid.Column="1" Grid.Row="5" Margin="0,0,0,10"/>
+            <Entry Text="{Binding Contact.PhoneNumber}" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Placeholder="Phone"
+                   Keyboard="Telephone"/>
+            <Picker Title="Mobile" ItemsSource="{Binding PhoneLabels}" SelectedItem="{Binding Contact.PhoneLabel}" Grid.Column="1" Grid.Row="5" Margin="0,0,0,10"/>
 
             <Image Source="email.png" Grid.Column="0" Grid.Row="6" HeightRequest="40"/>
-            <Entry Text="{Binding NewContact.Email}" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Placeholder="Phone"/>
-            <Picker Title="Home" Grid.Column="1" Grid.Row="7" Margin="0,0,0,10"/>
+            <Entry Text="{Binding Contact.Email}" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Placeholder="Phone"/>
+            <Picker Title="Home" ItemsSource="{Binding EmailLabels}" SelectedItem="{Binding Contact.EmailLabel}" Grid.Column="1" Grid.Row="7" Margin="0,0,0,10"/>
 
             <Label Text="More fields" Grid.Column="1" Grid.Row="8" FontSize="Medium" FontAttributes="Bold" Margin="0,0,0,20"/>
 

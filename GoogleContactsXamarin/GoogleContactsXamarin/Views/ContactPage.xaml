@@ -36,12 +36,12 @@
                                           CommandParameter="{Binding .}"/>
                             </ViewCell.ContextActions>
                             
-                            <StackLayout Orientation="Horizontal" Padding="10" >
-                                <Frame HeightRequest="40" WidthRequest="40" CornerRadius="150" Margin="0" Padding="0" BackgroundColor="red">
-                                    <Label Text="A" FontSize="Large" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" 
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <Frame HeightRequest="40" WidthRequest="40" CornerRadius="150" Margin="0" Padding="0" BackgroundColor="{Binding ColorHex}">
+                                    <Label Text="{Binding FirstName[0]}" FontSize="Large" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" 
                                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                                 </Frame>
-                                <Label Text="{Binding FullName}" VerticalOptions="Center" Padding="5"/>
+                                <Label Text="{Binding FullName}" FontFamily="Roboto-Regular" FontSize="16" TextColor="#3A3A3A" VerticalOptions="Center" Padding="5"/>
                             </StackLayout>
                         </ViewCell>
                         

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using System.Linq;
+using GoogleContactsXamarin.Services;
 
 namespace GoogleContactsXamarin.ViewModels
 {
