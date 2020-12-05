@@ -13,9 +13,19 @@
         <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" 
               ColumnDefinitions="*, 5*, 5*" ColumnSpacing="10" RowSpacing="20" Margin="20">
 
-            <Frame  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" HeightRequest="70" WidthRequest="70" Margin="0,0,0,40" 
+            <Frame Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" HeightRequest="70" WidthRequest="70" Margin="0,0,0,40" 
                     BackgroundColor="#1871E7" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource roundFrame}" >
-                <ImageButton Source="camera.png" BackgroundColor="Transparent" Margin="20" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                <ImageButton Source="camera.png" BackgroundColor="Transparent" Margin="20" 
+                             HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                             Command="{Binding AddPhotoCommand}"/>
+            </Frame>
+
+            <Frame IsVisible="{Binding HasPhoto}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" HeightRequest="120" WidthRequest="120" Margin="0,0,0,40" 
+                    BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" 
+                   Style="{StaticResource roundFrame}" >
+                <ImageButton IsVisible="{Binding HasPhoto}" Source="{Binding Contact.PhotoPath}" Margin="0" Padding="0"
+                             HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                             Command="{Binding AddPhotoCommand}"/>
             </Frame>
 
             <Image Source="user.png" Grid.Column="0" Grid.Row="1" Style="{StaticResource addIcon}"/>

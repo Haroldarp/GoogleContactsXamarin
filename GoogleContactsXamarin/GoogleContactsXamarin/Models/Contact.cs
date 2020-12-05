@@ -1,11 +1,12 @@
 ﻿using SQLite;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace GoogleContactsXamarin.Models
 {
-    public class Contact
+    public class Contact : INotifyPropertyChanged
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
@@ -27,6 +28,8 @@ namespace GoogleContactsXamarin.Models
         }
 
         private string lastName;
+
+
         public string LastName { 
             get 
             {
@@ -41,6 +44,7 @@ namespace GoogleContactsXamarin.Models
             } 
         }
         public string FullName { get { return $"{FirstName} {LastName}"; } }
+        public string PhotoPath { get; set; }
         public string Company { get; set; }
         public string PhoneNumber { get; set; }
         public string PhoneLabel { get; set; }
@@ -50,5 +54,7 @@ namespace GoogleContactsXamarin.Models
         public Contact()
         {
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

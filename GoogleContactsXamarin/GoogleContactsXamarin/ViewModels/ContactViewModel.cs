@@ -21,23 +21,23 @@ namespace GoogleContactsXamarin.ViewModels
         public ObservableCollection<GroupedItems<string,Contact>> GroupedContacts { get; set; }
         public ContactViewModel()
         {
-            AddCommand = new Command( async () => await OnAdd());
-            EditCommand = new Command<Contact>(async (contact) => await OnEdit(contact));
-            DeleteCommand = new Command<Contact>( async (contact) => await OnDelete(contact));
+            AddCommand = new Command( async () => await OnAddAsync());
+            EditCommand = new Command<Contact>(async (contact) => await OnEditAsync(contact));
+            DeleteCommand = new Command<Contact>( async (contact) => await OnDeleteAsync(contact));
 
             GetGroupedContacts();
         }
 
-        public async Task OnAdd()
+        public async Task OnAddAsync()
         {
             await App.Current.MainPage.Navigation.PushAsync(new AddContactPage());
         }
-        public async Task OnEdit(Contact contact)
+        public async Task OnEditAsync(Contact contact)
         {
             await App.Current.MainPage.Navigation.PushAsync(new AddContactPage(contact));
         }
 
-        public async Task OnDelete(Contact contact)
+        public async Task OnDeleteAsync(Contact contact)
         {
             await App.Database.DeleteContactAsync(contact);
             GetGroupedContacts();

@@ -26,6 +26,7 @@
             <!--Contacts ListView-->
             <ListView ItemsSource="{Binding GroupedContacts}" Grid.Row="1" HasUnevenRows="True" SeparatorVisibility="None" Margin="20,0,0,0"
                       IsGroupingEnabled="True" CachingStrategy="RecycleElement" SelectionMode="None" GroupShortNameBinding="{Binding Key}">
+                
                 <ListView.GroupHeaderTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -33,6 +34,7 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.GroupHeaderTemplate>
+                
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -54,11 +56,12 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                
             </ListView>
 
-            <!--Add button-->
         </Grid>
         
+         <!--Add button-->
         <Frame  BackgroundColor="#1972E8" Style="{StaticResource roundFrame}"
             AbsoluteLayout.LayoutBounds="0.93,0.97,55,55" AbsoluteLayout.LayoutFlags="PositionProportional">
             <Button Text="+" FontSize="30" Margin="0" Padding="0" TextColor="White" BackgroundColor="Transparent" CornerRadius="150" 
