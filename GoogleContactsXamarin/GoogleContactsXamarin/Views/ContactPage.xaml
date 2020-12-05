@@ -17,7 +17,7 @@
                     <Image Source="more.png" HeightRequest="25"/>
                     <Frame HasShadow="False" HeightRequest="40" WidthRequest="40" HorizontalOptions="Center" VerticalOptions="Center" 
                            Style="{StaticResource roundFrame}">
-                        <Image Source="selfie.png"/>
+                        <Image Source="selfie.png" Aspect="AspectFill"/>
                     </Frame>
                 </StackLayout>
             </Frame>

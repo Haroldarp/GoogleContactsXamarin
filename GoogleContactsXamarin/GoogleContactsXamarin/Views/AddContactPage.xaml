@@ -20,10 +20,10 @@
                              Command="{Binding AddPhotoCommand}"/>
             </Frame>
 
-            <Frame IsVisible="{Binding HasPhoto}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" HeightRequest="120" WidthRequest="120" Margin="0,0,0,40" 
+            <Frame IsVisible="{Binding HasPhoto}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" HeightRequest="120" WidthRequest="120" Margin="0,0,0,40"
                     BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" 
                    Style="{StaticResource roundFrame}" >
-                <ImageButton IsVisible="{Binding HasPhoto}" Source="{Binding Contact.PhotoPath}" Margin="0" Padding="0"
+                <ImageButton IsVisible="{Binding HasPhoto}" Source="{Binding Contact.PhotoPath}" Margin="0" Padding="0" Aspect="AspectFill"
                              HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                              Command="{Binding AddPhotoCommand}"/>
             </Frame>
