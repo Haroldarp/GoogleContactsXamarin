@@ -18,14 +18,14 @@ namespace GoogleContactsXamarin.ViewModels
         public ICommand AddCommand { get; }
         public ICommand EditCommand { get; }
         public ICommand DeleteCommand { get; }
-        public ObservableCollection<Contact> Contacts { get; set; }
+        public ObservableCollection<GroupedItems<string,Contact>> GroupedContacts { get; set; }
         public ContactViewModel()
         {
             AddCommand = new Command( async () => await OnAdd());
             EditCommand = new Command<Contact>(async (contact) => await OnEdit(contact));
             DeleteCommand = new Command<Contact>( async (contact) => await OnDelete(contact));
 
-            GetContacts();
+            GetGroupedContacts();
         }
 
         public async Task OnAdd()
@@ -40,17 +40,26 @@ namespace GoogleContactsXamarin.ViewModels
         public async Task OnDelete(Contact contact)
         {
             await App.Database.DeleteContactAsync(contact);
-            GetContacts();
+            GetGroupedContacts();
         }
 
-        private void GetContacts()
+        private void GetGroupedContacts()
         {
-            Task.Run(async () =>
-            {
-                IList<Contact> list = await App.Database.GetContactsAsync();
-                Contacts = new ObservableCollection<Contact>(list.OrderBy(c => c.FullName));
+            IList<Contact> contacts = new List<Contact>();
+            Task.Run(async () => { contacts = await App.Database.GetContactsAsync(); }).Wait();
 
-            }).Wait();
+
+            IEnumerable<GroupedItems<string, Contact>> groupedContact = new GroupedItems<string, Contact>[0];
+            if (contacts != null)
+            {
+                groupedContact = from c in contacts
+                                 orderby c.FirstName
+                                 group c by c.FirstName[0].ToString()
+                                 into grouped
+                                 select new GroupedItems<string, Contact>(grouped.Key, grouped);
+            }
+
+            GroupedContacts = new ObservableCollection<GroupedItems<string, Contact>>(groupedContact);
         }
     }
 }

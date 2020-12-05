@@ -3,6 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GoogleContactsXamarin.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <Style x:Key="roundFrame" TargetType="Frame">
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="CornerRadius" Value="150"/>
+                <Setter Property="IsClippedToBounds" Value="True"/>
+            </Style>
+            <Style x:Key="addIcon" TargetType="Image">
+                <Setter Property="HeightRequest" Value="40"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

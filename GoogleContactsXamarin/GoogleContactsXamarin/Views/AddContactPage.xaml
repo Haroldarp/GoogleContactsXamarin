@@ -13,25 +13,25 @@
         <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" 
               ColumnDefinitions="*, 5*, 5*" ColumnSpacing="10" RowSpacing="20" Margin="20">
 
-            <Frame  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" HorizontalOptions="CenterAndExpand" HeightRequest="70" WidthRequest="70" CornerRadius="150" 
-                   Margin="0,0,0,40" Padding="0" BackgroundColor="#1871E7">
+            <Frame  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" HeightRequest="70" WidthRequest="70" Margin="0,0,0,40" 
+                    BackgroundColor="#1871E7" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource roundFrame}" >
                 <ImageButton Source="camera.png" BackgroundColor="Transparent" Margin="20" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
             </Frame>
 
-            <Image Source="user.png" Grid.Column="0" Grid.Row="1" HeightRequest="40" />
+            <Image Source="user.png" Grid.Column="0" Grid.Row="1" Style="{StaticResource addIcon}"/>
             <Entry Text="{Binding Contact.FirstName}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Placeholder="Fist Name"/>
             <Entry Text="{Binding Contact.LastName}" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Placeholder="Last Name" Margin="0,0,0,10"/>
 
-            <Image Source="company.png" Grid.Column="0" Grid.Row="3" HeightRequest="40"/>
+            <Image Source="company.png" Grid.Column="0" Grid.Row="3" Style="{StaticResource addIcon}"/>
             <Entry Text="{Binding Contact.Company}" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Placeholder="Company" Margin="0,0,0,10"/>
 
-            <Image Source="phone.png" Grid.Column="0" Grid.Row="4" HeightRequest="40"/>
+            <Image Source="phone.png" Grid.Column="0" Grid.Row="4" Style="{StaticResource addIcon}"/>
             <Entry Text="{Binding Contact.PhoneNumber}" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Placeholder="Phone"
                    Keyboard="Telephone"/>
             <Picker Title="Mobile" ItemsSource="{Binding PhoneLabels}" SelectedItem="{Binding Contact.PhoneLabel}" Grid.Column="1" Grid.Row="5" Margin="0,0,0,10"/>
 
-            <Image Source="email.png" Grid.Column="0" Grid.Row="6" HeightRequest="40"/>
-            <Entry Text="{Binding Contact.Email}" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Placeholder="Phone"/>
+            <Image Source="email.png" Grid.Column="0" Grid.Row="6" Style="{StaticResource addIcon}"/>
+            <Entry Text="{Binding Contact.Email}" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Placeholder="Email"/>
             <Picker Title="Home" ItemsSource="{Binding EmailLabels}" SelectedItem="{Binding Contact.EmailLabel}" Grid.Column="1" Grid.Row="7" Margin="0,0,0,10"/>
 
             <Label Text="More fields" Grid.Column="1" Grid.Row="8" FontSize="Medium" FontAttributes="Bold" Margin="0,0,0,20"/>
