@@ -5,25 +5,26 @@
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White"
              x:Name="contactPage">
-    
-    <Grid RowDefinitions="Auto, Auto">
+    <AbsoluteLayout Margin="0">
+        <Grid RowDefinitions="Auto, Auto"
+              AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
         
         <!--Search bar-->
-        <Frame CornerRadius="10" Margin="20,10,20,-5" Grid.Row="0" BackgroundColor="White" Padding="10,0,10,0">
-            <StackLayout Orientation="Horizontal" Spacing="10">
-                <Image Source="menu.png" HeightRequest="30"/>
-                <Entry Placeholder="Search contacts" HorizontalOptions="FillAndExpand"/>
-                <Image Source="more.png" HeightRequest="25"/>
-                <Frame HasShadow="False" HeightRequest="40" WidthRequest="40" HorizontalOptions="Center" VerticalOptions="Center" 
-                       Style="{StaticResource roundFrame}">
-                    <Image Source="selfie.png"/>
-                </Frame>
-            </StackLayout>
-        </Frame>
+            <Frame CornerRadius="10" Margin="20,10,20,-5" Grid.Row="0" BackgroundColor="White" Padding="10,0,10,0">
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Image Source="menu.png" HeightRequest="30"/>
+                    <Entry Placeholder="Search contacts" HorizontalOptions="FillAndExpand"/>
+                    <Image Source="more.png" HeightRequest="25"/>
+                    <Frame HasShadow="False" HeightRequest="40" WidthRequest="40" HorizontalOptions="Center" VerticalOptions="Center" 
+                           Style="{StaticResource roundFrame}">
+                        <Image Source="selfie.png"/>
+                    </Frame>
+                </StackLayout>
+            </Frame>
         
-        <AbsoluteLayout Margin="20,0,0,0" Grid.Row="1" VerticalOptions="FillAndExpand">
+        
             <!--Contacts ListView-->
-            <ListView ItemsSource="{Binding GroupedContacts}" HasUnevenRows="True" SeparatorVisibility="None"
+            <ListView ItemsSource="{Binding GroupedContacts}" Grid.Row="1" HasUnevenRows="True" SeparatorVisibility="None" Margin="20,0,0,0"
                       IsGroupingEnabled="True" CachingStrategy="RecycleElement" SelectionMode="None" GroupShortNameBinding="{Binding Key}">
                 <ListView.GroupHeaderTemplate>
                     <DataTemplate>
@@ -44,7 +45,7 @@
                             </ViewCell.ContextActions>
 
                             <StackLayout Orientation="Horizontal" Margin="40,5,5,5">
-                                <Frame HeightRequest="40" WidthRequest="40"  BackgroundColor="{Binding ColorHex}" Style="{StaticResource roundFrame}">
+                                <Frame HeightRequest="40" WidthRequest="40" HasShadow="False"  BackgroundColor="{Binding ColorHex}" Style="{StaticResource roundFrame}">
                                     <Label Text="{Binding FirstName[0]}" FontSize="Large" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" 
                                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                                 </Frame>
@@ -56,15 +57,13 @@
             </ListView>
 
             <!--Add button-->
-            <Frame  BackgroundColor="#1972E8" Style="{StaticResource roundFrame}"
-                AbsoluteLayout.LayoutBounds="0.93,0.97,55,55" AbsoluteLayout.LayoutFlags="PositionProportional">
-                <Button Text="+" FontSize="30" Margin="0" Padding="0" TextColor="White" BackgroundColor="Transparent" CornerRadius="150" 
-                        Command="{Binding AddCommand}"/>
-            </Frame>
-        </AbsoluteLayout>
-
-    </Grid>
-    
-    
+        </Grid>
+        
+        <Frame  BackgroundColor="#1972E8" Style="{StaticResource roundFrame}"
+            AbsoluteLayout.LayoutBounds="0.93,0.97,55,55" AbsoluteLayout.LayoutFlags="PositionProportional">
+            <Button Text="+" FontSize="30" Margin="0" Padding="0" TextColor="White" BackgroundColor="Transparent" CornerRadius="150" 
+                    Command="{Binding AddCommand}"/>
+        </Frame>
+    </AbsoluteLayout>
     
 </ContentPage>
