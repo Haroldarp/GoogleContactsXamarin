@@ -16,6 +16,11 @@ namespace GoogleContactsXamarin.Views
         public ContactPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             BindingContext = new ContactViewModel();
         }
     }

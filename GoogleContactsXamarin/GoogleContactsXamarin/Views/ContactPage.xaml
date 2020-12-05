@@ -3,8 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GoogleContactsXamarin.Views.ContactPage"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="White">
+             BackgroundColor="White"
+             x:Name="contactPage">
+    
     <Grid RowDefinitions="Auto, Auto">
+        
+        <!--Search bar-->
         <Frame CornerRadius="10" Margin="20,10,20,-5" Grid.Row="0" BackgroundColor="White" Padding="10,0,10,0">
             <StackLayout Orientation="Horizontal" Spacing="10">
                 <Image Source="menu.png" HeightRequest="30"/>
@@ -16,12 +20,22 @@
                 </Frame>
             </StackLayout>
         </Frame>
-
+        
         <AbsoluteLayout Margin="10,0,0,0" Grid.Row="1">
+            <!--Contacts ListView-->
             <ListView ItemsSource="{Binding Contacts}" HasUnevenRows="True" SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
+                            
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Delete" IsDestructive="True" 
+                                          Command="{Binding BindingContext.DeleteCommand, Source={x:Reference contactPage}}"
+                                          CommandParameter="{Binding .}"/>
+                                <MenuItem Text="Edit" Command="{Binding BindingContext.EditCommand, Source={x:Reference contactPage}}"
+                                          CommandParameter="{Binding .}"/>
+                            </ViewCell.ContextActions>
+                            
                             <StackLayout Orientation="Horizontal" Padding="10" >
                                 <Frame HeightRequest="40" WidthRequest="40" CornerRadius="150" Margin="0" Padding="0" BackgroundColor="red">
                                     <Label Text="A" FontSize="Large" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" 
@@ -30,10 +44,12 @@
                                 <Label Text="{Binding FullName}" VerticalOptions="Center" Padding="5"/>
                             </StackLayout>
                         </ViewCell>
+                        
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
+            <!--Add button-->
             <Frame CornerRadius="100" Padding="0" IsClippedToBounds="True" 
                 AbsoluteLayout.LayoutBounds="0.97,0.97,55,55" AbsoluteLayout.LayoutFlags="PositionProportional">
                 <Button Text="+" FontSize="Large" TextColor="White" BackgroundColor="#1972E8" CornerRadius="100"
