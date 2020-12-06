@@ -35,7 +35,7 @@
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/AppIcon.appiconset</string>
     <key>NSCameraUsageDescription</key>
-    <string>This app needs access to the camera to take photos.</string>
+    <string>This app needs access to the camera to take photos or to scan barcodes.</string>
     <key>NSMicrophoneUsageDescription</key>
     <string>This app needs access to microphone for taking videos.</string>
     <key>NSPhotoLibraryAddUsageDescription</key>

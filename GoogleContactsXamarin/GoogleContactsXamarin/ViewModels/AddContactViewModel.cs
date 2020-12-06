@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using Contact = GoogleContactsXamarin.Models.Contact;
 using System.IO;
+using GoogleContactsXamarin.Views;
 
 namespace GoogleContactsXamarin.ViewModels
 {
@@ -17,6 +18,7 @@ namespace GoogleContactsXamarin.ViewModels
         public Contact Contact { get; set; }
         public bool HasPhoto { get; set; }
         public ICommand SaveCommad { get; }
+        public ICommand ScanCommad { get; }
         public ICommand AddPhotoCommand { get; }
         public IList<string> PhoneLabels => new List<string>() { "No Label", "Mobile", "Work", "Home", "Main", "Work Fax", "Home Fax",
         "Pager","Other"};
@@ -37,6 +39,7 @@ namespace GoogleContactsXamarin.ViewModels
             }
 
             SaveCommad = new Command(async () => await OnSaveAsync());
+            ScanCommad = new Command(async () => await OnScanAsync());
             AddPhotoCommand = new Command(async () => await OnAddPhotoAsync());
         }
 
@@ -51,6 +54,11 @@ namespace GoogleContactsXamarin.ViewModels
             await App.Database.SaveContactAsync(Contact);
             await App.Current.MainPage.DisplayAlert("Guardado", $"El contacto {Contact.FirstName} fue guardado en la agenda", "Ok");
             await App.Current.MainPage.Navigation.PopToRootAsync();
+        }
+
+        public async Task OnScanAsync()
+        {
+            await App.Current.MainPage.Navigation.PushAsync(new ScanPage(Contact));
         }
 
         public async Task OnAddPhotoAsync()
